@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Find job</title>
+</head>
+<body class="container">
+ {% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<ul class="align-content-sm-around">
+    <li class="list-group-item">
+        User: {{ user }}
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'main' %}">Home</a>
+    </li>
+</ul>
+{% block content %}
+{% endblock %}
+</body>
+</html>

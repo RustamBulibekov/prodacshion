@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<h3>All resume </h3>
+{% if resume %}
+{% for elem in resume %}
+{{ elem }}
+{{ elem.pk }}
+{% endfor %}
+{% else %}
+<p class="list-group"> page is empty </p>
+{% endif %}
+
+{% endblock %}

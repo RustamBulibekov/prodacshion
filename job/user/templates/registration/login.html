@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+<h1>Login</h1>
+<hr>
+{% if form.errors %}
+<p> {{ errors.error }}</p>
+{% endif %}
+<form action="{% url 'user:login' %}" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<body>
+  <hr>
+{% if user.is_authenticated %}
+  <a href="{% url 'user:logout' %}">Logout</a>
+  <h3>Vacancy</h3>
+  <p class="list-group"><a href="{% url 'vacancy:vacancy_list'%}">All vacancy</a></p>
+  <p class="list-group"> <a href="{% url 'vacancy:create_vacancy' %}">Add new vacancy</a> </p>
+  <h3>Resume</h3>
+  <p><a href="{% url 'vacancy:resume_list' %}">All resume</a></p>
+  <p><a href="{% url 'vacancy:create_resume'%}">Add new resume</a></p>
+{% else %}
+  <a href="{% url 'user:login' %}">LogIn</a>  |
+  <h3>Looking for job?</h3>
+  <a href="{% url 'user:register_employer' %}">Enter here</a>
+  <h3>Looking for employers? </h3>
+  <a href="{% url 'user:register_company' %}">Enter here</a>
+{% endif %}
+
+</body>
+{% endblock %}

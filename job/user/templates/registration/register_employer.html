@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+
+{% bootstrap_messages %}
+<form action="{% url 'user:register_employer' %}" method="post" class="form">
+  {% csrf_token %}
+   {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  {% endbuttons %}
+</form>
+
+{% endblock %}
